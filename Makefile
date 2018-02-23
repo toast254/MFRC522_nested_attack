@@ -6,7 +6,7 @@ CXXFLAGS = --std=c++11
 objects=build/main.o build/RC522.o build/MFrec.o build/crapto1.o build/crypto1.o
 
 exe: $(objects)
-	g++ $(objects) -o $(exe) -lpthread
+	g++ $(objects) -o $(exe) -lpthread -lwiringPi
 
 build/%.o: src/%.cpp 
 	$(CXX) -c $(CXXFLAGS) $^ -o $@

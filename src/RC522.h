@@ -13,7 +13,7 @@
  * WIRE: reset to compile outside of raspberry, for ease of working only
  */
 #define RC522_DBG	0
-#define RC522_WIRE	0
+#define RC522_WIRE	1
 
 #ifndef _RC522_H_
 #define _RC522_H_
