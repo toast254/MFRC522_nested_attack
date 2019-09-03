@@ -12,9 +12,13 @@ int main()
 {
  
     MFrec com;
-	
+    
+
+    byte key[] = {0xa0, 0xa1, 0xa2, 0xa3, 0xa4, 0xa5};
+
     //  (command, exploit addr (block with known key), attack addr (key to recover), opt key for exploit bloc)
-    com.crackKey( AUTHENT_A, 63, 6 );
+    com.crackKey( AUTHENT_A, 63, 4, key);
+
 
     com.stop();
     
