@@ -41,6 +41,9 @@ RC522::RC522()
     std::cout << "Constructor\n";
 #endif
 
+    // known default key
+    byte def_keys[6] = {0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5} ;
+	    
 /* initialize to default keys */
     for( int sector = 0; sector<16; sector++ )
     {
@@ -52,7 +55,8 @@ RC522::RC522()
 	    }
 	    else
 	    {
-		p_keys[sector][bytePos] = 0xFF;// fill with default key
+		//p_keys[sector][bytePos] = 0xFF;// fill with default key
+	    	p_keys[sector][bytePos] = def_keys[bytePos];
 	    }
 	}
     }
