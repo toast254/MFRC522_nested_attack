@@ -13,7 +13,7 @@
  * WIRE: reset to compile outside of raspberry, for ease of working only
  */
 #define RC522_DBG	0
-#define RC522_WIRE	1
+#define RC522_WIRE	0
 
 #ifndef _RC522_H_
 #define _RC522_H_
@@ -47,16 +47,16 @@ Section:                                          ~literals and defines
 /* 
  * raspberry	   (wirepi) pin	      MFRC522
  * ------------------------------------------------------------
- * Reset		5		RST
- * SPI CE0	     	10		SSN (slave select)
- * SPI MOSI	  	12		MOSI
- * SPI MISO		13		MISO
- * SPI SCK		14		SCK
- * 3.3V					Vcc
- * GND					GND
+ * Reset		22		RST
+ * SPI CE0	    24		SSN (slave select) // SDA
+ * SPI MOSI	  	19		MOSI
+ * SPI MISO	    21		MISO
+ * SPI SCK		23		SCK
+ * 3.3V			1		Vcc
+ * GND			6		GND
  *
  */
-#define RST	5
+#define RST	22
 #define CHANNEL 0// CE0
 #define SPI_SPEED 4000000// Hz (500k-32m)
 
